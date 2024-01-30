@@ -1,6 +1,8 @@
 <?php
 namespace Src;
 
+require_once '../vendor/autoload.php';
+
 use Src\Entity\Matrix;
 use Src\Helper\PrintHelper;
 use Src\Model\TSS;
@@ -56,7 +58,7 @@ $A_third = new Matrix(
 );
 $M = new Matrix(null, 0, 0);
 
-$result = $tss->calculateSystemTSS($A_first, $M, 0);
+$result = $tss->calculateSystemTSS($A_test, $M, 0);
 if($result === false) {
     echo "\n".'The system does not have solution!';
 } else {

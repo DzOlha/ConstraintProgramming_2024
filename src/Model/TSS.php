@@ -14,8 +14,7 @@ class TSS
      * @param Matrix $A - the matrix of the system of linear homogeneous equations
      * @param Matrix $M - the initial set of solutions
      * @param int $k - the number of equation in the system that we are working on
-     * @param int $rows - total number of rows of the matrix A
-     * @param int $columns - total number of columns of the matrix A
+
      * @return Matrix|false
      */
     public function calculateSystemTSS(
@@ -30,11 +29,11 @@ class TSS
         }
 
         for ($i = $k; $i < $A->getRows(); $i++) {
-            echo "\n".'Index $i = '.$i."\n";
+            //echo "\n".'Index $i = '.$i."\n";
             $M = $this->calculateSubsystemTSS($M, $A->getRow($i), $i);
 
-            PrintHelper::printMatrix($M->getMatrix(), 'M_1 result CHANGED = ');
-            echo "-----------------------------------------------------------------------------------------------------";
+            PrintHelper::printMatrix($M->getMatrix(), 'M_1 result = ');
+            echo "\n-----------------------------------------------------------------------------------------------------";
         }
 
         if ($M->isEmpty()) {
@@ -47,7 +46,7 @@ class TSS
     {
         $function = [];
         PrintHelper::printMatrix($M->getMatrix(), 'M old = ');
-        PrintHelper::printArray($equation, 'Equation old = ');
+        PrintHelper::printArray($equation, 'Equation row = ');
 
         if($iteration > 0) {
             for($j = 0; $j < $M->getRows(); $j++) {
